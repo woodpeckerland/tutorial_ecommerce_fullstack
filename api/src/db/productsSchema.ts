@@ -14,4 +14,5 @@ export const productsTable = pgTable("products", {
   image: varchar({ length: 255 }),
   // doublePrecision is used for floating-point numbers
   price: doublePrecision().notNull(),
+  quantity: integer().default(0),
 });
