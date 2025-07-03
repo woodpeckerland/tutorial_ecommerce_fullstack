@@ -1,5 +1,5 @@
-// Request and Response types from express
-// Node.js uses other types for Request and Response
+// request and response types from express
+// node.js uses other types for request and response
 import { Request, Response } from "express";
 
 export function listProducts(req: Request, res: Response) {
