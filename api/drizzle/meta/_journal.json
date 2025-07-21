@@ -15,6 +15,13 @@
       "when": 1751548377719,
       "tag": "0001_odd_sharon_ventura",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1753089861157,
+      "tag": "0002_milky_tigra",
+      "breakpoints": true
     }
   ]
 }
