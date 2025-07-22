@@ -1,5 +1,6 @@
 import express, { json, urlencoded } from "express";
 import productsRoutes from "./routes/products/index";
+import authRoutes from "./routes/auth/index";
 
 // express.js application that sets up a server with basic API endpoints
 const app = express();
@@ -21,6 +22,9 @@ app.get("/", (req, res) => {
 
 // product routes
 app.use("/products", productsRoutes);
+
+// authentication routes
+app.use("/auth", authRoutes);
 
 // starting the server and listening on the specified port
 app.listen(port, () => {
