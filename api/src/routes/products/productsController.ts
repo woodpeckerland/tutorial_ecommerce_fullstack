@@ -2,8 +2,9 @@
 // node.js uses other types for request and response
 import { Request, Response } from "express";
 import { db } from "../../db/index";
-import { productsTable } from "../../db/productsSchema";
+import { productsTable, createProductSchema } from "../../db/productsSchema";
 import { eq } from "drizzle-orm";
+import _ from "lodash";
 
 export async function listProducts(req: Request, res: Response) {
   try {
@@ -47,7 +48,7 @@ export async function createProduct(req: Request, res: Response) {
     // req.body contains the data sent in the request body
     const [product] = await db
       .insert(productsTable)
-      .values(req.body)
+      .values(req.cleanBody)
       .returning();
     res.status(201).json(product);
   } catch (error) {
@@ -61,7 +62,7 @@ export async function updateProduct(req: Request, res: Response) {
     // update a product by id
     // req.body contains the data to update
     const id = Number(req.params.id);
-    const updatedFields = req.body;
+    const updatedFields = req.cleanBody;
     const [product] = await db
       .update(productsTable)
       .set(updatedFields)
