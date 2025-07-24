@@ -1,6 +1,6 @@
 import express, { json, urlencoded } from "express";
-import productsRoutes from "./routes/products/index";
-import authRoutes from "./routes/auth/index";
+import productsRoutes from "./routes/products/index.js";
+import authRoutes from "./routes/auth/index.js";
 
 // express.js application that sets up a server with basic API endpoints
 const app = express();
