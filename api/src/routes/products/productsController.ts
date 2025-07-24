@@ -13,7 +13,6 @@ export async function listProducts(req: Request, res: Response) {
     const products = await db.select().from(productsTable);
     res.json(products);
   } catch (error) {
-    console.log(error);
     res.status(500).send(error);
   }
 }
