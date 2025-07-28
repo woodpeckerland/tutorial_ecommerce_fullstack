@@ -1,6 +1,7 @@
 import express, { json, urlencoded } from "express";
 import productsRoutes from "./routes/products/index.js";
 import authRoutes from "./routes/auth/index.js";
+import ordersRoutes from "./routes/orders/index.js";
 import serverless from "serverless-http";
 
 // express.js application that sets up a server with basic API endpoints
@@ -26,6 +27,9 @@ app.use("/products", productsRoutes);
 
 // authentication routes
 app.use("/auth", authRoutes);
+
+// orders routes
+app.use("/orders", ordersRoutes);
 
 if (process.env.NODE_ENV === "dev") {
   // starting the server and listening on the specified port

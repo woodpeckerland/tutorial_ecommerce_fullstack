@@ -31,3 +31,14 @@ export const orderItemsTable = pgTable("order_items", {
 });
 
 export const insertOrderSchema = z.object({});
+
+export const insertOrderItemSchema = z.object({
+  productId: z.number().int().positive(),
+  quantity: z.number().int().positive(),
+  price: z.number().positive(),
+});
+
+export const insertOrderWithItemsSchema = z.object({
+  order: insertOrderSchema,
+  items: z.array(insertOrderItemSchema),
+});
