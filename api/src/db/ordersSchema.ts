@@ -5,8 +5,8 @@ import {
   varchar,
   doublePrecision,
 } from "drizzle-orm/pg-core";
-import { usersTable } from "./usersSchema";
-import { productsTable } from "./productsSchema";
+import { usersTable } from "./usersSchema.js";
+import { productsTable } from "./productsSchema.js";
 import { z } from "zod";
 
 export const ordersTable = pgTable("orders", {

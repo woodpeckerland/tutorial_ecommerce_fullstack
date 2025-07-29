@@ -1,7 +1,7 @@
 import express, { json, urlencoded } from "express";
-import productsRoutes from "./routes/products/index";
-import authRoutes from "./routes/auth/index";
-import ordersRoutes from "./routes/orders/index";
+import productsRoutes from "./routes/products/index.js";
+import authRoutes from "./routes/auth/index.js";
+import ordersRoutes from "./routes/orders/index.js";
 import serverless from "serverless-http";
 
 // express.js application that sets up a server with basic API endpoints

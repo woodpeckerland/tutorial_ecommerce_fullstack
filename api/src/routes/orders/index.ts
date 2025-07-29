@@ -4,13 +4,13 @@ import {
   getOrder,
   listOrders,
   updateOrder,
-} from "./ordersController";
-import { validateData } from "../../middlewares/validationMiddleware";
-import { verifyToken } from "../../middlewares/authMiddleware";
+} from "./ordersController.js";
+import { validateData } from "../../middlewares/validationMiddleware.js";
+import { verifyToken } from "../../middlewares/authMiddleware.js";
 import {
   insertOrderWithItemsSchema,
   updateOrderSchema,
-} from "../../db/ordersSchema";
+} from "../../db/ordersSchema.js";
 
 const router = Router();
 
