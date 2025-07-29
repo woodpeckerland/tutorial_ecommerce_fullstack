@@ -1,8 +1,8 @@
 // request and response types from express
 // node.js uses other types for request and response
 import { Request, Response } from "express";
-import { db } from "../../db/index.js";
-import { productsTable } from "../../db/productsSchema.js";
+import { db } from "../../db/index";
+import { productsTable } from "../../db/productsSchema";
 import { eq } from "drizzle-orm";
 import _ from "lodash";
 

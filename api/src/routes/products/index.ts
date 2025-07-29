@@ -5,13 +5,13 @@ import {
   createProduct,
   updateProduct,
   deleteProduct,
-} from "./productsController.js";
-import { validateData } from "../../middlewares/validationMiddleware.js";
+} from "./productsController";
+import { validateData } from "../../middlewares/validationMiddleware";
 import {
   createProductSchema,
   updateProductSchema,
-} from "../../db/productsSchema.js";
-import { verifyToken, verifySeller } from "../../middlewares/authMiddleware.js";
+} from "../../db/productsSchema";
+import { verifyToken, verifySeller } from "../../middlewares/authMiddleware";
 
 // creating API endpoints
 // initializing router

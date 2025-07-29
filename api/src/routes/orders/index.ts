@@ -1,8 +1,16 @@
 import { Router } from "express";
-import { createOrder } from "./ordersController.js";
-import { validateData } from "../../middlewares/validationMiddleware.js";
-import { verifyToken } from "../../middlewares/authMiddleware.js";
-import { insertOrderWithItemsSchema } from "../../db/ordersSchema.js";
+import {
+  createOrder,
+  getOrder,
+  listOrders,
+  updateOrder,
+} from "./ordersController";
+import { validateData } from "../../middlewares/validationMiddleware";
+import { verifyToken } from "../../middlewares/authMiddleware";
+import {
+  insertOrderWithItemsSchema,
+  updateOrderSchema,
+} from "../../db/ordersSchema";
 
 const router = Router();
 
@@ -12,5 +20,9 @@ router.post(
   validateData(insertOrderWithItemsSchema),
   createOrder
 );
+
+router.get("/", verifyToken, listOrders);
+router.get("/:id", verifyToken, getOrder);
+router.put("/:id", verifyToken, validateData(updateOrderSchema), updateOrder);
 
 export default router;

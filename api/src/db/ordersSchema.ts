@@ -5,8 +5,8 @@ import {
   varchar,
   doublePrecision,
 } from "drizzle-orm/pg-core";
-import { usersTable } from "./usersSchema.js";
-import { productsTable } from "./productsSchema.js";
+import { usersTable } from "./usersSchema";
+import { productsTable } from "./productsSchema";
 import { z } from "zod";
 
 export const ordersTable = pgTable("orders", {
@@ -41,4 +41,8 @@ export const insertOrderItemSchema = z.object({
 export const insertOrderWithItemsSchema = z.object({
   order: insertOrderSchema,
   items: z.array(insertOrderItemSchema),
+});
+
+export const updateOrderSchema = z.object({
+  status: z.string().max(50).optional(),
 });
