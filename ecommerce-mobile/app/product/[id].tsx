@@ -9,14 +9,20 @@ import { VStack } from "@/components/ui/vstack";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProductById } from "@/api/products";
 import { ActivityIndicator } from "react-native";
+import { useCart } from "@/store/cartStore";
 
 // This screen displays the details of a product based on the product ID passed in the URL
 // It retrieves the product ID from the URL parameters and finds the corresponding product in the products list
 // If the product is not found, it displays a "Product not found" message
 
 export default function ProductDetailsScreen() {
+  // Get the product ID from the URL parameters
   const { id } = useLocalSearchParams<{ id: string }>();
 
+  // Use the Zustand store to access the addProduct function
+  const addProduct = useCart((state) => state.addProduct);
+
+  // Fetch the product details using React Query
   const {
     data: product,
     isLoading,
@@ -25,6 +31,10 @@ export default function ProductDetailsScreen() {
     queryKey: ["products", id],
     queryFn: () => fetchProductById(Number(id)),
   });
+
+  const addToCart = () => {
+    addProduct(product);
+  };
 
   if (isLoading) {
     return <ActivityIndicator />;
@@ -59,7 +69,10 @@ export default function ProductDetailsScreen() {
           <Text size="sm">{product.description}</Text>
         </VStack>
         <Box className="flex-col sm:flex-row">
-          <Button className="px-4 py-2 mr-0 mb-3 sm:mr-3 sm:mb-0 sm:flex-1">
+          <Button
+            onPress={addToCart}
+            className="px-4 py-2 mr-0 mb-3 sm:mr-3 sm:mb-0 sm:flex-1"
+          >
             <ButtonText size="sm">Add to cart</ButtonText>
           </Button>
           <Button

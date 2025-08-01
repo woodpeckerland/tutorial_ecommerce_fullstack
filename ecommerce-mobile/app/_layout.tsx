@@ -1,7 +1,10 @@
 import "@/global.css";
-import { Stack } from "expo-router";
+import { Link, Stack } from "expo-router";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Icon } from "@/components/ui/icon";
+import { ShoppingCart } from "lucide-react-native";
+import { Pressable } from "react-native";
 
 // Create a new QueryClient instance to manage server state
 // This client will be used to fetch and cache data from the server
@@ -14,7 +17,17 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <GluestackUIProvider>
-        <Stack>
+        <Stack
+          screenOptions={{
+            headerRight: () => (
+              <Link href={"/cart"} asChild>
+                <Pressable>
+                  <Icon as={ShoppingCart} />
+                </Pressable>
+              </Link>
+            ),
+          }}
+        >
           <Stack.Screen name="index" options={{ title: "Shop" }} />
         </Stack>
       </GluestackUIProvider>
