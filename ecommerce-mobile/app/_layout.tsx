@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Icon } from "@/components/ui/icon";
 import { ShoppingCart } from "lucide-react-native";
 import { Pressable } from "react-native";
+import { useCart } from "@/store/cartStore";
+import { Text } from "@/components/ui/text";
 
 // Create a new QueryClient instance to manage server state
 // This client will be used to fetch and cache data from the server
@@ -14,6 +16,7 @@ const queryClient = new QueryClient();
 // It wraps the entire application in the Gluestack UI provider to apply global styles and themes
 // It also sets up the React Query client to manage server state
 export default function RootLayout() {
+  const cartItemsNum = useCart((state) => state.items.length);
   return (
     <QueryClientProvider client={queryClient}>
       <GluestackUIProvider>
@@ -21,8 +24,9 @@ export default function RootLayout() {
           screenOptions={{
             headerRight: () => (
               <Link href={"/cart"} asChild>
-                <Pressable>
+                <Pressable className="flex-row gap-2">
                   <Icon as={ShoppingCart} />
+                  <Text>{cartItemsNum}</Text>
                 </Pressable>
               </Link>
             ),

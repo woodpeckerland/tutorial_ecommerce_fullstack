@@ -41,7 +41,7 @@ export default function ProductListItem({ product }: Props) {
             {product.name}
           </Text>
           <Heading size="md" className="mb-4">
-            ${product.price.toFixed(2)}
+            $ {product.price.toFixed(2)}
           </Heading>
         </Card>
       </Pressable>

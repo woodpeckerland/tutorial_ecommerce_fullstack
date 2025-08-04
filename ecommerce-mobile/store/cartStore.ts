@@ -17,16 +17,20 @@ export interface CartItem {
 
 // 3. define Zustand state
 export interface CartState {
+  resetCart: any;
   items: CartItem[];
   addProduct: (product: Product) => void;
 }
 
-// 4. create Zustand – now correctly typed
+// 4. create Zustand
 export const useCart = create<CartState>((set) => ({
   items: [],
 
   addProduct: (product) =>
+    // TODO: check if product already exists in cart and increment quantity
     set((state) => ({
       items: [...state.items, { product, quantity: 1 }],
     })),
+
+  resetCart: () => set({ items: [] }),
 }));
