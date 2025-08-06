@@ -1,3 +1,4 @@
+import { login } from "@/api/auth";
 import { Button, ButtonText } from "@/components/ui/button";
 import { FormControl } from "@/components/ui/form-control";
 import { Heading } from "@/components/ui/heading";
@@ -5,12 +6,15 @@ import { HStack } from "@/components/ui/hstack";
 import { Input, InputField, InputIcon, InputSlot } from "@/components/ui/input";
 import { Text } from "@/components/ui/text";
 import { VStack } from "@/components/ui/vstack";
+import { useMutation } from "@tanstack/react-query";
 import { EyeIcon, EyeOffIcon } from "lucide-react-native";
 import { useState } from "react";
 import { View } from "react-native";
 
 export default function LoginScreen() {
   const [showPassword, setShowPassword] = useState(false);
+
+  // useMutation({ mutationFn: () => login });
 
   const handleState = () => {
     setShowPassword((showState) => {
@@ -52,7 +56,7 @@ export default function LoginScreen() {
           </VStack>
           <HStack space="sm">
             <Button className="flex-1" variant="outline" onPress={() => {}}>
-              <ButtonText>Sign up</ButtonText>
+              <ButtonText>Register</ButtonText>
             </Button>
             <Button className="flex-1" onPress={() => {}}>
               <ButtonText>Login</ButtonText>
